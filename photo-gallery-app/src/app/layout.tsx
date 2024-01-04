@@ -6,6 +6,7 @@ import './globals.css'
 import { cn } from '@/lib/utils'
 import { HeartIcon } from '@/components/icons/heart'
 import Link from 'next/link'
+import { FolderIcon } from '@/components/icons/folder'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +25,7 @@ function SideMenu() {
           </h2>
           <div className="space-y-1">
             <Button
-              variant="ghost"
+              variant="ghost" // want to use secondary
               className="w-full justify-start flex gap-2"
               asChild
             >
@@ -46,22 +47,15 @@ function SideMenu() {
                 Gallery
               </Link>
             </Button>
-            <Button variant="ghost" className="w-full justify-start flex gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"
-                />
-              </svg>
-              Albums
+            <Button
+              variant="ghost"
+              className="w-full justify-start flex gap-2"
+              asChild
+            >
+              <Link href={'/albums'}>
+                <FolderIcon />
+                Albums
+              </Link>
             </Button>
             <Button
               variant="ghost"

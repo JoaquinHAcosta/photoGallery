@@ -15,12 +15,26 @@ import { useState } from 'react'
 import { SearchResult } from '@/app/gallery/page'
 import { addImageToAlbum } from './actions'
 
-export function AddToAlbumDialog({ image }: { image: SearchResult }) {
+interface Props {
+  image: SearchResult
+  onClose: () => void
+}
+
+export function AddToAlbumDialog({ image, onClose }: Props) {
   const [albumName, setAlbumName] = useState('')
 
   const [openState, setOpenState] = useState(false)
+
   return (
-    <Dialog open={openState} onOpenChange={setOpenState}>
+    <Dialog
+      open={openState}
+      onOpenChange={(newOpenState) => {
+        if (!newOpenState) {
+          onClose()
+        }
+        setOpenState(newOpenState)
+      }}
+    >
       <DialogTrigger asChild>
         <Button variant={'secondary'}>
           <FolderIcon className="mr-2 h-4 w-4" />
@@ -50,6 +64,7 @@ export function AddToAlbumDialog({ image }: { image: SearchResult }) {
         <DialogFooter>
           <Button
             onClick={async () => {
+              onClose()
               setOpenState(false)
               await addImageToAlbum(image, albumName)
             }}
