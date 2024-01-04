@@ -46,7 +46,6 @@ export default function CloudinaryImage(
         />
       )}
       <ImageMenu />
-      left
     </div>
   )
 }

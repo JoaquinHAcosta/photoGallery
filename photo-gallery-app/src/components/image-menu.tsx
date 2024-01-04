@@ -20,7 +20,7 @@ export function ImageMenu() {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-32">
           <DropdownMenuItem>
-            <FolderIcon />
+            <FolderIcon className="mr-2 h-4 w-4" />
             <span>Add to Album</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
