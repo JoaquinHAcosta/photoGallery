@@ -2,7 +2,6 @@
 
 import { CldUploadButton, CldUploadWidgetResults } from 'next-cloudinary'
 import React from 'react'
-import { UploadResult } from '../page'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 

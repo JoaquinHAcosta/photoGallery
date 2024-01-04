@@ -1,7 +1,5 @@
-import { ImageGrid } from '@/components/image-grid'
 import UploadButton from './upload-button'
 import cloudinary from 'cloudinary'
-import CloudinaryImage from './cloudinary-image'
 import GalleryGrid from './gallery-grid'
 
 export type SearchResult = {
