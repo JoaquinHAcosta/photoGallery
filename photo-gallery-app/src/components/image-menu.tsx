@@ -9,6 +9,8 @@ import { MenuIcon } from './icons/menu'
 import { AddToAlbumDialog } from './add-to-album-dialog'
 import { SearchResult } from '@/app/gallery/page'
 import { useState } from 'react'
+import Link from 'next/link'
+import { PencilIcon } from 'lucide-react'
 
 export function ImageMenu({ image }: { image: SearchResult }) {
   const [open, setOpen] = useState(false)
@@ -24,6 +26,14 @@ export function ImageMenu({ image }: { image: SearchResult }) {
         <DropdownMenuContent className="w-38">
           <DropdownMenuItem asChild>
             <AddToAlbumDialog image={image} onClose={() => setOpen(false)} />
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link
+              href={`/edit?publicId=${encodeURIComponent(image.public_id)}`}
+            >
+              <PencilIcon className="mr-2 h-4 w-4" />
+              Edit
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
