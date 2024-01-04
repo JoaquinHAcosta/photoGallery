@@ -3,13 +3,13 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { MenuIcon } from './icons/menu'
-import { FolderIcon } from './icons/folder'
+import { AddToAlbumDialog } from './add-to-album-dialog'
+import { SearchResult } from '@/app/gallery/page'
 
-export function ImageMenu() {
+export function ImageMenu({ image }: { image: SearchResult }) {
   return (
     <div className="absolute top-2 right-2">
       <DropdownMenu>
@@ -18,10 +18,9 @@ export function ImageMenu() {
             <MenuIcon />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-32">
-          <DropdownMenuItem>
-            <FolderIcon className="mr-2 h-4 w-4" />
-            <span>Add to Album</span>
+        <DropdownMenuContent className="w-38">
+          <DropdownMenuItem asChild>
+            <AddToAlbumDialog image={image} />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
