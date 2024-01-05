@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { FolderIcon } from '@/components/icons/folder'
 import { Folder } from './albums/page'
 import cloudinary from 'cloudinary'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -102,7 +103,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="border-b ">
           <div className="flex h-16 items-center px-4 container mx-auto">
-            PHOTOS APP
+            <Image
+              src={'/album.png'}
+              width={80}
+              height={80}
+              alt="icon of photo album app"
+            />
             <div className="ml-auto flex items-center space-x-4">
               <Avatar>
                 <AvatarImage src="https://github.com/shadcn.png" />

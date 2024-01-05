@@ -1,6 +1,8 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { CldImage } from 'next-cloudinary'
 import { useState } from 'react'
 
@@ -18,6 +20,9 @@ const EditPage = ({ searchParams: { publicId } }: Props) => {
     | 'removeBg'
   >(undefined)
 
+  const [prompt, setPrompt] = useState('')
+  const [pendingPrompt, setPendingPrompt] = useState('')
+
   return (
     <section>
       <div className="flex flex-col gap-8">
@@ -32,9 +37,22 @@ const EditPage = ({ searchParams: { publicId } }: Props) => {
           >
             Clear All
           </Button>
-          <Button onClick={() => setTransformation('generative-fill')}>
-            Apply Generate Fill
-          </Button>
+
+          <div className="flex flex-col gap-4">
+            <Button
+              onClick={() => {
+                setTransformation('generative-fill')
+                setPrompt(pendingPrompt)
+              }}
+            >
+              Apply Generate Fill
+            </Button>
+            <Label>Prompt</Label>
+            <Input
+              value={pendingPrompt}
+              onChange={(e) => setPendingPrompt(e.currentTarget.value)}
+            />
+          </div>
           <Button onClick={() => setTransformation('blur')}>Apply Blur</Button>
           <Button onClick={() => setTransformation('grayscale')}>
             Conver to Gray
@@ -53,11 +71,13 @@ const EditPage = ({ searchParams: { publicId } }: Props) => {
           {transformation === 'generative-fill' && (
             <CldImage
               src={publicId}
-              width={1200}
+              width={1800}
               height={1400}
               alt="text"
               crop="pad"
-              fillBackground
+              fillBackground={{
+                prompt,
+              }}
             />
           )}
 
