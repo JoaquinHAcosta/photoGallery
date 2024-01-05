@@ -86,7 +86,7 @@ const EditPage = ({ searchParams: { publicId } }: Props) => {
               src={publicId}
               width={1200}
               height={1400}
-              pixelate
+              pixelate={true}
               alt="text"
             />
           )}
