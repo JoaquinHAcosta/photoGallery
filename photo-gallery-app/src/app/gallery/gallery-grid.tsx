@@ -19,7 +19,7 @@ export default function GalleryGrid({ images }: Props) {
             imageData={imageData}
             width="400"
             height="300"
-            alt="an image of something"
+            alt="random text"
           />
         )
       }}
